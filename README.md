@@ -4,7 +4,7 @@
 
 ![monoids](https://github.com/user-attachments/assets/9ba8ec53-e9f7-4800-b96c-3d78dfa0b802)
 
-![monads2](https://github.com/user-attachments/assets/a0ccdedb-efe0-424f-88fa-b8a968bec9b8)
+![monads2](https://github.com/user-attachments/assets/88eebf89-4cf7-4e26-8e4e-00d954307f24)
 
     type Functor a b = a -> b
 
