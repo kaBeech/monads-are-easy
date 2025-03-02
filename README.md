@@ -21,4 +21,4 @@
           op(a1, id) == a1
 
     Bind :: M a -> (a -> M a) -> M a
-    Bind (Monad x) f = f(x)
+    Bind (Monad x) f = f(x) :: M a
