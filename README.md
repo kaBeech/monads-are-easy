@@ -1,31 +1,41 @@
 # Monad Notes
 
-![monads](https://github.com/user-attachments/assets/4b8c69bf-f019-465f-843e-535882794a2d)
+![monads](https://github.com/user-attachments/assets/4916a6de-ccd0-4d90-be88-67ab30a455c7)
+
+![monoids](https://github.com/user-attachments/assets/9ba8ec53-e9f7-4800-b96c-3d78dfa0b802)
+
+![monads2](https://github.com/user-attachments/assets/a0ccdedb-efe0-424f-88fa-b8a968bec9b8)
 
     type Functor a b = a -> b
 
     type Endofunctor a = a -> a
 
-                        Effects!
-                           |
-                           v  
+                      Extra info/effects!
+                               |
+                               v  
     type Monad (a) = Monoid (a -> a)
 
     type Monoid a
         where
+          -- Totality (per type definition)
           op :: a -> a -> a
             where
-              op(a1, op(a2, a3)) == op(op(a1, a2), a3)
+              -- Associativity
+              op(x, op(y, z)) == op(op(x, y), z)
           id :: a
             where
-              op(a1, id) == a1
+              -- Left identity
+              op(id, x) == x
+              -- Left identity
+              op(x, id) == x
 
     -- Monads must implement
     typeConstructor :: a -> M a
     typeConstructor x = M x
 
-    -- Monads must implement
-    -- AKA typeConverter
+    -- Monads must implement.
+    -- AKA typeConverter or return.
+    -- Congruent to id in Monoid
     unit :: a -> M a
         where
             -- Left identity
@@ -33,9 +43,10 @@
             -- Right identity
             M x >>= unit == M x
 
-    -- Monads must implement
-    -- AKA combinator
-    -- Type definition implies totality
+    -- Monads must implement.
+    -- AKA combinator, map, or flatmap.
+    -- Congruent to op in Monoid.
+    -- Totality (per type definition)   
     bind :: M a -> (a -> M b) -> M b
     bind (M x) f = f(x) :: M b
         where
@@ -43,13 +54,14 @@
             bind (M x) (\x -> (bind (f(x)) g)) == bind (bind (M x) f) g
 
     -- Alternative bind - infix of above
+    -- Totality (per type definition)   
     `>>=` :: M a -> (a -> M b) -> M b
     M x >>= f = f(x) :: M b
         where
             -- Associativity
             M x >>= (\x -> (f(x) >>= g)) == (M x >>= f) >>= g
             
-    -- Example of a function using monadic patterns
+    -- Example of a function returning a monadic type.
     -- Gives the first element of a list with at least
     -- one element
     safeHead :: [a] -> Maybe a
