@@ -2,9 +2,9 @@
 
 ![monads](https://github.com/user-attachments/assets/4b8c69bf-f019-465f-843e-535882794a2d)
 
-    Functor: a -> b
+    Functor :: a -> b
 
-    Endofunctor: a -> a
+    Endofunctor :: a -> a
 
                         Effects!
                            |
@@ -19,3 +19,6 @@
       ID: id :: a
         where
           op(a1, id) == a1
+
+    Bind :: M a -> (a -> M a) -> M a
+    Bind (Monad x) f = f(x)
