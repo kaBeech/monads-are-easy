@@ -157,20 +157,20 @@ Monads have a type constructor, a bind operator, and a return operator:
         M x >>= return == M x
             
     -- Example: Function returning a monadic type.
-    -- Gives the first element of a list with at least
-    -- one element.
+    -- Inflates a balloon by 5 pounds per square inch.
+    -- Returns Nothing if the balloon pops.
     -- See note* below if this doesn't make sense
-    safeHead :: [a] -> Maybe a
-    safeHead [] = Nothing
-    safeHead (x : _) = Just x
+    inflateBalloon :: Int -> Maybe Int
+    inflateBalloon psi
+      | lb <= 50 = Just (5 + psi)
+      | lb > 50  = Nothing
 
     -- Example: Chaining binds.
-    -- Both these examples give the second element of a 
-    -- list with at least two elements
-    safeNeck :: [a] -> Maybe a
-    safeNeck xs = safeHead x >>= safeHead
-    safeNeck' :: [a] -> Maybe a
-    safeNeck' xs = bind (safeHead x) safeHead
+    -- Returns Nothing if the balloon pops during either inflation step
+    dangerouslyInflateBalloon :: Int -> Maybe Int
+    dangerouslyInflateBalloon xs = inflateBalloon x >>= inflateBalloon
+    dangerouslyInflateBalloon' :: Int -> Maybe Int
+    dangerouslyInflateBalloon' xs = bind (inflateBalloon x) inflateBalloon
 
 *For more information on the Maybe monad, see pretty much any introductory
 source on monads below, like [Learn You A Haskell](https://learnyouahaskell.github.io/a-fistful-of-monads.html#getting-our-feet-wet-with-maybe)
