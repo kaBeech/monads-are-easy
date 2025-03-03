@@ -2,6 +2,8 @@
 
 I made this when the ideas of monads and related concepts finally "fully" clicked in my head.
 
+I hope this helps show how simple these concepts really are!
+
 My goal is not to provide a complete introduction to monads, but to summarize the
 important points in a way that is easy to understand for someone who already has some
 experience working with or learning about monads.
@@ -18,7 +20,38 @@ resources to recommend!
 
 ![monads](https://github.com/user-attachments/assets/efe6535a-d225-4bc8-b714-8b000566d91f)
 
-## Pseudo-Haskell
+## Compact Pseudo-Haskell
+
+    type Functor a b = a -> b
+
+    type Endofunctor a = a -> a
+
+    type Monad (a) = Monoid (a -> a)
+
+    type Monoid a
+        where
+          op :: a -> a -> a
+            where
+              op(x, op(y, z)) == op(op(x, y), z)
+          id :: a
+            where
+              op(id, x) == x
+              op(x, id) == x
+
+    TypeConstructor :: a -> M a
+    TypeConstructor x = M x
+
+    unit :: a -> M a
+        where
+            unit(x) >>= f == f(x)
+            M x >>= unit == M x
+            
+    `>>=` :: M a -> (a -> M b) -> M b
+    M x >>= f = f(x) :: M b
+        where
+            M x >>= (\x' -> (f(x') >>= g)) == (M x >>= f) >>= g
+
+## Verbose Pseudo-Haskell
 
     type Functor a b = a -> b
 
