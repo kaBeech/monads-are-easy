@@ -8,7 +8,7 @@ experience working with or learning about monads.
 
 For a more complete introduction, please see the [sources](#Sources) below. Alternatively,
 ask your local functional programming nerd/type theorist and they likely have even better
-resources!
+resources to recommend!
 
 ## Images
 
