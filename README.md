@@ -93,7 +93,7 @@ Monads have a type constructor, a bind operator, and a return operator:
 
     type Endofunctor a = a -> a
 
-    -- Monad a = Monoid (a -> a)
+    -- Monad a == Monoid (a -> a)
 
     class Monoid a where
         op :: a -> a -> a
@@ -119,9 +119,9 @@ Monads have a type constructor, a bind operator, and a return operator:
     type Endofunctor a = a -> a
 
     -- (Potentially) extra info/effects!
-    --                      |
-    --                      v  
-    -- Monad a = Monoid (a -> a)
+    --                       |
+    --                       v  
+    -- Monad a == Monoid (a -> a)
     
     class Monoid a where
         -- | Totality (per type definition)
