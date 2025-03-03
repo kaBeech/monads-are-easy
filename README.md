@@ -12,11 +12,11 @@ resources to recommend!
 
 ## Images
 
-![monads](https://github.com/user-attachments/assets/4916a6de-ccd0-4d90-be88-67ab30a455c7)
+![monads_monoids](https://github.com/user-attachments/assets/77ddca7f-1223-44a8-b726-7ef3dc8b24f4)
 
 ![monoids](https://github.com/user-attachments/assets/9ba8ec53-e9f7-4800-b96c-3d78dfa0b802)
 
-![monads2](https://github.com/user-attachments/assets/540a3f0f-eac3-4a3f-b454-9a641e6e5c93)
+![monads](https://github.com/user-attachments/assets/efe6535a-d225-4bc8-b714-8b000566d91f)
 
 ## Pseudo-Haskell
 
@@ -24,9 +24,9 @@ resources to recommend!
 
     type Endofunctor a = a -> a
 
-                      Extra info/effects!
-                               |
-                               v  
+    -- (Potentially) extra info/effects!
+    --                          |
+    --                          v  
     type Monad (a) = Monoid (a -> a)
 
     type Monoid a
