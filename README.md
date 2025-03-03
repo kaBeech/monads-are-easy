@@ -5,7 +5,7 @@ I made this when the ideas of monads and related concepts "fully" clicked in my 
 I hope this helps show how simple these concepts really are!
 
 If this seems like a long read, it's because it gives the same basic info in like 20
-different ways! Feel free to jump to the format that is the friendliest to you and stop
+different ways! Feel free to jump around to whichever parts seem helpful and stop
 reading once you feel you've got it =)
 
 My goal is not to provide a complete introduction to monads, but to summarize the
