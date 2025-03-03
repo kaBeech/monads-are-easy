@@ -20,6 +20,17 @@ resources to recommend!
 
 ![monads](https://github.com/user-attachments/assets/efe6535a-d225-4bc8-b714-8b000566d91f)
 
+## Reductive Summary
+
+A monadic type is the base type plus some extra information/effects.
+
+Having a monadic type `M a` means that you can make some functions that take an `a` and
+return an `a`, potentially with some extra information/effects that can be safely ignored,
+while still guaranteeing some essential properties (i.e. associativity, identity, and
+totality*).
+
+*Totality is redundant here, as it's already implied by taking and returning an `a`.
+
 ## Compact Pseudo-Haskell
 
     type Functor a b = a -> b
