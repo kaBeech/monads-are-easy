@@ -122,52 +122,52 @@ Monads have a type constructor, a bind operator, and a return operator:
     -- Monad a = Monoid (a -> a)
     
     class Monoid a where
-        -- Totality (per type definition)
+        -- | Totality (per type definition)
         op :: a -> a -> a
-         -- Associativity
+        -- | Associativity
         op x (op y z) == op (op x y) z
         id :: a
-        -- Left identity
+        -- | Left identity
         op id x = x
-        -- Right identity
+        -- | Right identity
         op x id = x
 
     class Monad a where
         TypeConstructor :: a -> M a
         TypeConstructor x = M x
-        -- AKA combinator, map, or flatmap.
-        -- Congruent to op in Monoid.
-        -- Totality (per type definition)   
+        -- | AKA combinator, map, or flatmap.
+        --   Congruent to op in Monoid.
+        --   Totality (per type definition)   
         bind :: M a -> (a -> M b) -> M b
         bind (M x) f = f(x) :: M b
-        -- Associativity
+        -- | Associativity
         bind (M x) (\x' -> (bind (f(x')) g)) == bind (bind (M x) f) g
-        -- Alternative bind - infix of above
-        -- Totality (per type definition)   
+        -- | Alternative bind - infix of above
+        --   Totality (per type definition)   
         `>>=` :: M a -> (a -> M b) -> M b
         M x >>= f = f x :: M b
-        -- Associativity
+        -- | Associativity
         M x >>= (\x' -> (f x' >>= g)) == (M x >>= f) >>= g
-        -- AKA type converter or unit.
-        -- Congruent to id in Monoid
+        -- | AKA type converter or unit.
+        --   Congruent to id in Monoid
         return :: a -> M a
-        -- Left identity
+        -- | Left identity
         return x >>= f == f x
-        -- Right identity
+        -- | Right identity
         M x >>= return == M x
             
-    -- Example: Function returning a monadic type.
-    -- Inflates an imaginary (i.e. actually inflating the balloon as a side
-    -- effect is not modeled here) balloon by 5 pounds per square inch.
-    -- Returns Nothing if the balloon pops.
-    -- See note* below if this doesn't make sense
+    -- | Example: Function returning a monadic type.
+    --   Inflates an imaginary (i.e. actually inflating the balloon as a side
+    --   effect is not modeled here) balloon by 5 pounds per square inch.
+    --   Returns Nothing if the balloon pops.
+    --   See note* below if this doesn't make sense
     inflateBalloon :: Int -> Maybe Int
     inflateBalloon psi
       | lb <= 50 = Just (5 + psi)
       | lb > 50  = Nothing
 
-    -- Example: Chaining binds.
-    -- Returns Nothing if the balloon pops during either inflation step
+    -- | Example: Chaining binds.
+    --   Returns Nothing if the balloon pops during either inflation step
     dangerouslyInflateBalloon :: Int -> Maybe Int
     dangerouslyInflateBalloon xs = inflateBalloon x >>= inflateBalloon
     dangerouslyInflateBalloon' :: Int -> Maybe Int
