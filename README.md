@@ -16,15 +16,15 @@ resources to recommend!
 
 "A monad (in `a`) is a monoid in the category of endofunctors (of `a`)":
 
-![monads_monoids](https://github.com/user-attachments/assets/77ddca7f-1223-44a8-b726-7ef3dc8b24f4)
+![monads_monoids](https://github.com/user-attachments/assets/4d4e2715-8fca-4eb9-9536-9e9fe0f0e956)
 
 Monoids:
 
-![monoids](https://github.com/user-attachments/assets/9ba8ec53-e9f7-4800-b96c-3d78dfa0b802)
+![monoids](https://github.com/user-attachments/assets/d13d4c3a-18a3-440f-8126-1fb48700215b)
 
 Monads:
 
-![monads](https://github.com/user-attachments/assets/efe6535a-d225-4bc8-b714-8b000566d91f)
+![monads](https://github.com/user-attachments/assets/4a0465fc-cad7-44e4-a2cd-989ef464cb7a)
 
 ## Reductive Summary
 
