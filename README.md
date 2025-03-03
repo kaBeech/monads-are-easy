@@ -1,6 +1,6 @@
 # Monad Notes
 
-I made this when the ideas of monads and related concepts finally clicked in my head.
+I made this when the ideas of monads and related concepts finally "fully" clicked in my head.
 
 My goal is not to provide a complete introduction to monads, but to summarize the
 important points in a way that is easy to understand for someone who already has some
