@@ -29,11 +29,12 @@ totality*).
 
 ![monads_monoids](https://github.com/user-attachments/assets/4d4e2715-8fca-4eb9-9536-9e9fe0f0e956)
 
-Monoids:
+Monoids have a type, an operator that exhibits totality and associativity, and an element
+that exhibits identity when used with that operator:
 
 ![monoids](https://github.com/user-attachments/assets/d13d4c3a-18a3-440f-8126-1fb48700215b)
 
-Monads:
+Monads have a type constructor, a bind operator, and a return operator:
 
 ![monads](https://github.com/user-attachments/assets/ecd2e356-944f-4035-be6a-e42743e4bd04)
 
