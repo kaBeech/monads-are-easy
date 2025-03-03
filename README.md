@@ -44,11 +44,11 @@ resources to recommend!
               op(x, id) == x
 
     -- Monads must implement
-    typeConstructor :: a -> M a
-    typeConstructor x = M x
+    TypeConstructor :: a -> M a
+    TypeConstructor x = M x
 
     -- Monads must implement.
-    -- AKA typeConverter or return.
+    -- AKA type converter or return.
     -- Congruent to id in Monoid
     unit :: a -> M a
         where
