@@ -1,6 +1,6 @@
 # Monads Are Easy!
 
-I made this when the ideas of monads and related concepts finally "fully" clicked in my head.
+I made this when the ideas of monads and related concepts "fully" clicked in my head.
 
 I hope this helps show how simple these concepts really are!
 
