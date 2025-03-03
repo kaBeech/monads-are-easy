@@ -1,4 +1,4 @@
-# Monad Notes
+# Monads Are Easy!
 
 I made this when the ideas of monads and related concepts finally "fully" clicked in my head.
 
