@@ -31,7 +31,7 @@ totality*).
 
 "A monad (in `a`) is a monoid in the category of endofunctors (of `a`)." Since it's a monoid
 (see below for more), we know we'll get something of the same (monadic) type out of the endofunctors
-and can safely hide some extra information/effects inside their execution pipelines:
+**and can safely hide some extra information/effects inside their execution pipelines**:
 
 ![monads_monoids](https://github.com/user-attachments/assets/4d4e2715-8fca-4eb9-9536-9e9fe0f0e956)
 
