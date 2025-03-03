@@ -31,7 +31,7 @@ Monads:
 A monadic type is the base type plus some extra information/effects.
 
 Having a monadic type `M a` simply means that you can make some functions that take an `a`
-and return an `a`, potentially with some extra information/effects that can be safely ignored,
+and return an `a`, potentially with some extra information/effects that can be safely ignored
 while still guaranteeing some essential properties (i.e. associativity, identity, and
 totality*).
 
