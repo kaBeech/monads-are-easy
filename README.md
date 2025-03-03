@@ -55,7 +55,7 @@
     bind (M x) f = f(x) :: M b
         where
             -- Associativity
-            bind (M x) (\x -> (bind (f(x)) g)) == bind (bind (M x) f) g
+            bind (M x) (\x' -> (bind (f(x')) g)) == bind (bind (M x) f) g
 
     -- Alternative bind - infix of above
     -- Totality (per type definition)   
@@ -63,7 +63,7 @@
     M x >>= f = f(x) :: M b
         where
             -- Associativity
-            M x >>= (\x -> (f(x) >>= g)) == (M x >>= f) >>= g
+            M x >>= (\x' -> (f(x') >>= g)) == (M x >>= f) >>= g
             
     -- Example: Function returning a monadic type.
     -- Gives the first element of a list with at least
