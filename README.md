@@ -14,9 +14,15 @@ resources to recommend!
 
 ## Images
 
+"A monad (in `a`) is a monoid in the category of endofunctors (of `a`)":
+
 ![monads_monoids](https://github.com/user-attachments/assets/77ddca7f-1223-44a8-b726-7ef3dc8b24f4)
 
+Monoids:
+
 ![monoids](https://github.com/user-attachments/assets/9ba8ec53-e9f7-4800-b96c-3d78dfa0b802)
+
+Monads:
 
 ![monads](https://github.com/user-attachments/assets/efe6535a-d225-4bc8-b714-8b000566d91f)
 
@@ -24,8 +30,8 @@ resources to recommend!
 
 A monadic type is the base type plus some extra information/effects.
 
-Having a monadic type `M a` means that you can make some functions that take an `a` and
-return an `a`, potentially with some extra information/effects that can be safely ignored,
+Having a monadic type `M a` simply means that you can make some functions that take an `a`
+and return an `a`, potentially with some extra information/effects that can be safely ignored,
 while still guaranteeing some essential properties (i.e. associativity, identity, and
 totality*).
 
