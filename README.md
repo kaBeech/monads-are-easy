@@ -180,7 +180,7 @@ or [Wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)#Over
 
 Some of these sources are more reliable than others, but I've found them
 all helpful in gaining a more complete understanding. Notably, the two videos
-at the top contain some inaccuracies, but they can be a good starting point for
+at the top contain some inaccuracies, but they still can be a good starting point for
 wrapping your brain around the concepts in a practical way.
 
 - [A monad is a monoid in the category of endofunctors. Whats the problem? #SoMe2](https://www.youtube.com/watch?v=ENo_B8CZNRQ)
