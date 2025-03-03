@@ -12,6 +12,17 @@ For a more complete introduction, please see the [sources](#Sources) below. Alte
 ask your local functional programming nerd/type theorist and they likely have even better
 resources to recommend!
 
+## Summary
+
+A monadic type is the base type plus some extra information/effects.
+
+Having a monadic type `M a` simply means that you can make some functions that take an `a`
+and return an `a`, potentially with some extra information/effects that can be safely ignored
+while still guaranteeing some essential properties (i.e. associativity, identity, and
+totality*).
+
+*Totality is redundant here, as it's already implied by taking and returning an `a`.
+
 ## Images
 
 "A monad (in `a`) is a monoid in the category of endofunctors (of `a`)":
@@ -25,17 +36,6 @@ Monoids:
 Monads:
 
 ![monads](https://github.com/user-attachments/assets/4a0465fc-cad7-44e4-a2cd-989ef464cb7a)
-
-## Reductive Summary
-
-A monadic type is the base type plus some extra information/effects.
-
-Having a monadic type `M a` simply means that you can make some functions that take an `a`
-and return an `a`, potentially with some extra information/effects that can be safely ignored
-while still guaranteeing some essential properties (i.e. associativity, identity, and
-totality*).
-
-*Totality is redundant here, as it's already implied by taking and returning an `a`.
 
 ## Compact Pseudo-Haskell
 
