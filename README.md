@@ -1,5 +1,7 @@
 # Monads Are Easy!
 
+![monads_monoids](https://github.com/user-attachments/assets/4d4e2715-8fca-4eb9-9536-9e9fe0f0e956)
+
 I made this when the ideas of monads and related concepts "fully" clicked in my head.
 
 I hope this helps show how simple these concepts really are!
