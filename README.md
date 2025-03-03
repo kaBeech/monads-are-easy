@@ -130,8 +130,8 @@ totality*).
     -- Example: Chaining binds.
     -- Both these examples give the second element of a 
     -- list with at least two elements
-    safeNeck = safeHead x >>= safeHead
-    safeNeck' = bind (safeHead x) safeHead
+    safeNeck x = safeHead x >>= safeHead
+    safeNeck' x = bind (safeHead x) safeHead
 
 *For more information on the Maybe monad, see pretty much any introductory source on monads below, like [Learn You A Haskell](https://learnyouahaskell.github.io/a-fistful-of-monads.html#getting-our-feet-wet-with-maybe) or [Wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)#Overview)
 
