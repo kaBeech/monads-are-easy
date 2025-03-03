@@ -1,5 +1,15 @@
 # Monad Notes
 
+I made this when the ideas of monads and related concepts finally clicked in my head.
+
+My goal is not to provide a complete introduction to monads, but to summarize the
+important points in a way that is easy to understand for someone who already has some
+experience working with or learning about monads.
+
+For a more complete introduction, please see the [sources](#Sources) below. Alternatively,
+ask your local functional programming nerd/type theorist and they likely have even better
+resources!
+
 ## Images
 
 ![monads](https://github.com/user-attachments/assets/4916a6de-ccd0-4d90-be88-67ab30a455c7)
@@ -67,7 +77,8 @@
             
     -- Example: Function returning a monadic type.
     -- Gives the first element of a list with at least
-    -- one element
+    -- one element.
+    -- See note* below if this doesn't make sense
     safeHead :: [a] -> Maybe a
     safeHead [] = Nothing
     safeHead (x : _) = Just x
@@ -77,3 +88,23 @@
     -- list with at least two elements
     safeNeck = safeHead x >>= safeHead
     safeNeck' = bind (safeHead x) safeHead
+
+*For more information on the Maybe monad, see pretty much any introductory source on monads below, like [Learn You A Haskell](https://learnyouahaskell.github.io/a-fistful-of-monads.html#getting-our-feet-wet-with-maybe) or [Wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)#Overview)
+
+## Sources
+
+Some of these sources are more reliable than others, but I've found them all helpful in gaining a more complete understanding
+
+- https://github.com/haskell/mtl
+- https://github.com/haskell/random
+- https://github.com/ekmett/free
+- https://hackage.haskell.org/package/ghc-internal-9.1201.0/docs/src/GHC.Internal.Data.Maybe.html#maybe
+- https://learnyouahaskell.github.io/
+- https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours
+- https://www.youtube.com/watch?v=ENo_B8CZNRQ
+- https://www.youtube.com/watch?v=VgA4wCaxp-Q
+- https://en.wikipedia.org/wiki/Monad_(functional_programming)
+- https://en.wikipedia.org/wiki/Monad_(category_theory)
+- https://en.wikipedia.org/wiki/Monoid
+- https://wiki.haskell.org/index.php?title=Monad
+- https://www.youtube.com/watch?v=t1e8gqXLbsU
