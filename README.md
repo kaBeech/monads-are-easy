@@ -1,10 +1,14 @@
 # Monad Notes
 
+## Images
+
 ![monads](https://github.com/user-attachments/assets/4916a6de-ccd0-4d90-be88-67ab30a455c7)
 
 ![monoids](https://github.com/user-attachments/assets/9ba8ec53-e9f7-4800-b96c-3d78dfa0b802)
 
 ![monads2](https://github.com/user-attachments/assets/88eebf89-4cf7-4e26-8e4e-00d954307f24)
+
+## Pseudo-Haskell
 
     type Functor a b = a -> b
 
@@ -61,13 +65,14 @@
             -- Associativity
             M x >>= (\x -> (f(x) >>= g)) == (M x >>= f) >>= g
             
-    -- Example of a function returning a monadic type.
+    -- Example: Function returning a monadic type.
     -- Gives the first element of a list with at least
     -- one element
     safeHead :: [a] -> Maybe a
     safeHead [] = Nothing
     safeHead (x : _) = Just x
-    
+
+    -- Example: Chaining binds.
     -- Both these examples give the second element of a 
     -- list with at least two elements
     safeNeck = safeHead x >>= safeHead
