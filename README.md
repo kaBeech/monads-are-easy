@@ -35,7 +35,7 @@ Monoids:
 
 Monads:
 
-![monads](https://github.com/user-attachments/assets/4a0465fc-cad7-44e4-a2cd-989ef464cb7a)
+![monads](https://github.com/user-attachments/assets/ecd2e356-944f-4035-be6a-e42743e4bd04)
 
 ## Compact Pseudo-Haskell
 
@@ -58,10 +58,10 @@ Monads:
     TypeConstructor :: a -> M a
     TypeConstructor x = M x
 
-    unit :: a -> M a
+    return :: a -> M a
         where
-            unit(x) >>= f == f(x)
-            M x >>= unit == M x
+            return(x) >>= f == f(x)
+            M x >>= return == M x
             
     `>>=` :: M a -> (a -> M b) -> M b
     M x >>= f = f(x) :: M b
@@ -98,14 +98,14 @@ Monads:
     TypeConstructor x = M x
 
     -- Monads must implement.
-    -- AKA type converter or return.
+    -- AKA type converter or unit.
     -- Congruent to id in Monoid
-    unit :: a -> M a
+    return :: a -> M a
         where
             -- Left identity
-            unit(x) >>= f == f(x)
+            return(x) >>= f == f(x)
             -- Right identity
-            M x >>= unit == M x
+            M x >>= return == M x
 
     -- Monads must implement.
     -- AKA combinator, map, or flatmap.
