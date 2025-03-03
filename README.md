@@ -139,22 +139,27 @@ Monads:
     safeNeck x = safeHead x >>= safeHead
     safeNeck' x = bind (safeHead x) safeHead
 
-*For more information on the Maybe monad, see pretty much any introductory source on monads below, like [Learn You A Haskell](https://learnyouahaskell.github.io/a-fistful-of-monads.html#getting-our-feet-wet-with-maybe) or [Wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)#Overview)
+*For more information on the Maybe monad, see pretty much any introductory
+source on monads below, like [Learn You A Haskell](https://learnyouahaskell.github.io/a-fistful-of-monads.html#getting-our-feet-wet-with-maybe)
+or [Wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)#Overview)
 
 ## Sources
 
-Some of these sources are more reliable than others, but I've found them all helpful in gaining a more complete understanding
+Some of these sources are more reliable than others, but I've found them
+all helpful in gaining a more complete understanding. Notably, the two videos
+at the top contain some inaccuracies, but they can be a good starting point for
+wrapping your brain around the concepts in a practical way.
 
-- https://github.com/haskell/mtl
-- https://github.com/haskell/random
-- https://github.com/ekmett/free
-- https://hackage.haskell.org/package/ghc-internal-9.1201.0/docs/src/GHC.Internal.Data.Maybe.html#maybe
-- https://learnyouahaskell.github.io/
-- https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours
-- https://www.youtube.com/watch?v=ENo_B8CZNRQ
-- https://www.youtube.com/watch?v=VgA4wCaxp-Q
-- https://en.wikipedia.org/wiki/Monad_(functional_programming)
-- https://en.wikipedia.org/wiki/Monad_(category_theory)
-- https://en.wikipedia.org/wiki/Monoid
-- https://wiki.haskell.org/index.php?title=Monad
-- https://www.youtube.com/watch?v=t1e8gqXLbsU
+- [A monad is a monoid in the category of endofunctors. Whats the problem? #SoMe2](https://www.youtube.com/watch?v=ENo_B8CZNRQ)
+- [What is a monad? (Design Pattern)](https://www.youtube.com/watch?v=VgA4wCaxp-Q)
+- [Wikipedia: Monad (functional programming)](https://en.wikipedia.org/wiki/Monad_(functional_programming))
+- [Wikipedia: Monad (category theory)](https://en.wikipedia.org/wiki/Monad_(category_theory))
+- [Wikipedia: Monoid](https://en.wikipedia.org/wiki/Monoid)
+- [Learn You A Haskell (Community Edition)](https://learnyouahaskell.github.io/)
+- [Write Yourself a Scheme in 48 Hours (Wikibooks Edition)](https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours)
+- [Haskell Wiki: Monad](https://wiki.haskell.org/index.php?title=Monad)
+- [What is a Monad? - Computerphile](https://www.youtube.com/watch?v=t1e8gqXLbsU)
+- [Maybe](https://hackage.haskell.org/package/ghc-internal-9.1201.0/docs/src/GHC.Internal.Data.Maybe.html#maybe)
+- [mtl](https://github.com/haskell/mtl)
+- [random](https://github.com/haskell/random)
+- [free](https://github.com/ekmett/free)
