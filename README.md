@@ -4,6 +4,10 @@ I made this when the ideas of monads and related concepts "fully" clicked in my 
 
 I hope this helps show how simple these concepts really are!
 
+If this seems like a long read, it's because it gives the same basic info in like 20
+different ways! Feel free to jump to the format that is the friendliest to you and stop
+reading once you feel you've got it =)
+
 My goal is not to provide a complete introduction to monads, but to summarize the
 important points in a way that is easy to understand for someone who already has some
 experience working with or learning about monads.
@@ -25,7 +29,9 @@ totality*).
 
 ## Images
 
-"A monad (in `a`) is a monoid in the category of endofunctors (of `a`)":
+"A monad (in `a`) is a monoid in the category of endofunctors (of `a`)." Since it's a monoid
+(see below for more), we know we'll get something of the same (monadic) type out of the endofunctors
+and can safely hide some extra information/effects inside their execution pipelines:
 
 ![monads_monoids](https://github.com/user-attachments/assets/4d4e2715-8fca-4eb9-9536-9e9fe0f0e956)
 
@@ -38,36 +44,71 @@ Monads have a type constructor, a bind operator, and a return operator:
 
 ![monads](https://github.com/user-attachments/assets/ecd2e356-944f-4035-be6a-e42743e4bd04)
 
+## Basic Review
+
+### Associativity
+
+- ((f ∘ g) ∘ h)(x) = (f ∘ (g ∘ h))(x)
+
+#### Examples of Associativity
+
+    (x + y) + z = x + (y + z)
+
+    (x * y) * z = x * (y * z)
+
+#### Anti-Example of Associativity
+
+    (x / y) / z != x / (y / z)
+
+### Identity
+
+- (f ∘ i)(x) = x
+- (i ∘ f)(x) = x
+
+#### Examples of Identity
+
+    x + 0 = x
+
+    1 * x = x
+
+### Totality
+
+- T -> T
+
+#### Examples of Totality
+
+    Integer + Integer = Integer
+
+    Float * Float = Float
+
+#### Anti-Example of Totality
+
+    Integer / Integer = Float
+    
 ## Compact Pseudo-Haskell
 
     type Functor a b = a -> b
 
     type Endofunctor a = a -> a
 
-    type Monad (a) = Monoid (a -> a)
+    -- Monad a = Monoid (a -> a)
 
-    type Monoid a
-        where
-          op :: a -> a -> a
-            where
-              op(x, op(y, z)) == op(op(x, y), z)
-          id :: a
-            where
-              op(id, x) == x
-              op(x, id) == x
+    class Monoid a where
+        op :: a -> a -> a
+        op x (op y z) == op (op x y) z
+        id :: a
+        op id x = x
+        op x id = x
 
-    TypeConstructor :: a -> M a
-    TypeConstructor x = M x
-
-    return :: a -> M a
-        where
-            return(x) >>= f == f(x)
-            M x >>= return == M x
-            
-    `>>=` :: M a -> (a -> M b) -> M b
-    M x >>= f = f(x) :: M b
-        where
-            M x >>= (\x' -> (f(x') >>= g)) == (M x >>= f) >>= g
+    class Monad a where
+        TypeConstructor :: a -> M a
+        TypeConstructor x = M x
+        `>>=` :: M a -> (a -> M b) -> M b
+        M x >>= f = f x :: M b
+        M x >>= (\x' -> (f x' >>= g)) == (M x >>= f) >>= g
+        return :: a -> M a
+        return x >>= f == f x
+        M x >>= return == M x
 
 ## Verbose Pseudo-Haskell
 
@@ -76,55 +117,44 @@ Monads have a type constructor, a bind operator, and a return operator:
     type Endofunctor a = a -> a
 
     -- (Potentially) extra info/effects!
-    --                          |
-    --                          v  
-    type Monad (a) = Monoid (a -> a)
+    --                      |
+    --                      v  
+    -- Monad a = Monoid (a -> a)
+    
+    class Monoid a where
+        -- Totality (per type definition)
+        op :: a -> a -> a
+         -- Associativity
+        op x (op y z) == op (op x y) z
+        id :: a
+        -- Left identity
+        op id x = x
+        -- Right identity
+        op x id = x
 
-    type Monoid a
-        where
-          -- Totality (per type definition)
-          op :: a -> a -> a
-            where
-              -- Associativity
-              op(x, op(y, z)) == op(op(x, y), z)
-          id :: a
-            where
-              -- Left identity
-              op(id, x) == x
-              -- Left identity
-              op(x, id) == x
-
-    -- Monads must implement
-    TypeConstructor :: a -> M a
-    TypeConstructor x = M x
-
-    -- Monads must implement.
-    -- AKA type converter or unit.
-    -- Congruent to id in Monoid
-    return :: a -> M a
-        where
-            -- Left identity
-            return(x) >>= f == f(x)
-            -- Right identity
-            M x >>= return == M x
-
-    -- Monads must implement.
-    -- AKA combinator, map, or flatmap.
-    -- Congruent to op in Monoid.
-    -- Totality (per type definition)   
-    bind :: M a -> (a -> M b) -> M b
-    bind (M x) f = f(x) :: M b
-        where
-            -- Associativity
-            bind (M x) (\x' -> (bind (f(x')) g)) == bind (bind (M x) f) g
-
-    -- Alternative bind - infix of above
-    -- Totality (per type definition)   
-    `>>=` :: M a -> (a -> M b) -> M b
-    M x >>= f = f(x) :: M b
-        where
-            -- Associativity
-            M x >>= (\x' -> (f(x') >>= g)) == (M x >>= f) >>= g
+    class Monad a where
+        TypeConstructor :: a -> M a
+        TypeConstructor x = M x
+        -- AKA combinator, map, or flatmap.
+        -- Congruent to op in Monoid.
+        -- Totality (per type definition)   
+        bind :: M a -> (a -> M b) -> M b
+        bind (M x) f = f(x) :: M b
+        -- Associativity
+        bind (M x) (\x' -> (bind (f(x')) g)) == bind (bind (M x) f) g
+        -- Alternative bind - infix of above
+        -- Totality (per type definition)   
+        `>>=` :: M a -> (a -> M b) -> M b
+        M x >>= f = f x :: M b
+        -- Associativity
+        M x >>= (\x' -> (f x' >>= g)) == (M x >>= f) >>= g
+        -- AKA type converter or unit.
+        -- Congruent to id in Monoid
+        return :: a -> M a
+        -- Left identity
+        return x >>= f == f x
+        -- Right identity
+        M x >>= return == M x
             
     -- Example: Function returning a monadic type.
     -- Gives the first element of a list with at least
@@ -137,8 +167,10 @@ Monads have a type constructor, a bind operator, and a return operator:
     -- Example: Chaining binds.
     -- Both these examples give the second element of a 
     -- list with at least two elements
-    safeNeck x = safeHead x >>= safeHead
-    safeNeck' x = bind (safeHead x) safeHead
+    safeNeck :: [a] -> Maybe a
+    safeNeck xs = safeHead x >>= safeHead
+    safeNeck' :: [a] -> Maybe a
+    safeNeck' xs = bind (safeHead x) safeHead
 
 *For more information on the Maybe monad, see pretty much any introductory
 source on monads below, like [Learn You A Haskell](https://learnyouahaskell.github.io/a-fistful-of-monads.html#getting-our-feet-wet-with-maybe)
