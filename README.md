@@ -167,6 +167,8 @@ Monads have a type constructor, a bind operator, and a return operator:
       | lb > 50  = Nothing
 
     -- | Example: Chaining binds.
+    --   Inflates the imginary balloon twice, for a total of 10 additional
+    --   pounds per square inch.
     --   Returns Nothing if the balloon pops during either inflation step
     dangerouslyInflateBalloon :: Int -> Maybe Int
     dangerouslyInflateBalloon xs = inflateBalloon x >>= inflateBalloon
