@@ -166,7 +166,7 @@ Monads have a type constructor, a bind operator, and a return operator:
     inflateBalloon :: Int -> Maybe Int
     inflateBalloon psi
       | lb <= 50 = Just (5 + psi)
-      | lb > 50  = Nothing
+      | otherwise = Nothing
 
     -- | Example: Chaining binds.
     --   Inflates the imginary balloon twice, for a total of 10 additional
@@ -176,6 +176,20 @@ Monads have a type constructor, a bind operator, and a return operator:
     dangerouslyInflateBalloon xs = inflateBalloon x >>= inflateBalloon
     dangerouslyInflateBalloon' :: Int -> Maybe Int
     dangerouslyInflateBalloon' xs = bind (inflateBalloon x) inflateBalloon
+
+    -- | Example: Adding Effects.
+    --   Deflates the imaginary balloon by 5 pounds per square inch and
+    --   prints the new psi to stdout
+    deflateBalloonWithMonitor :: Int -> IO Int
+    deflateBalloonWithMonitor psi 
+        | psi <= 0 = do
+            let psi' = 0
+            print psi'
+            return psi'
+        | otherwise = do
+            let psi' = psi - 5
+            print psi'
+            return psi'
 
 *For more information on the Maybe monad, see pretty much any introductory
 source on monads below, like [Learn You A Haskell](https://learnyouahaskell.github.io/a-fistful-of-monads.html#getting-our-feet-wet-with-maybe)
