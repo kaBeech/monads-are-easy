@@ -157,7 +157,8 @@ Monads have a type constructor, a bind operator, and a return operator:
         M x >>= return == M x
             
     -- Example: Function returning a monadic type.
-    -- Inflates a balloon by 5 pounds per square inch.
+    -- Inflates an imaginary (i.e. actually inflating the balloon as a side
+    -- effect is not modeled here) balloon by 5 pounds per square inch.
     -- Returns Nothing if the balloon pops.
     -- See note* below if this doesn't make sense
     inflateBalloon :: Int -> Maybe Int
