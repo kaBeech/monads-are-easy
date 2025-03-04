@@ -28,10 +28,12 @@ Having a monad means that:
 1. You can make some functions that take an element of type `a`and put it into some structure `S`
    (which may have some extra information/effects).
    
-2. You have such a function that doesn't change the element when putting it into the structure.
+2. You have such a function that doesn't change the element when putting it into the structure (bind).
    
 3. You can make some functions that operate on elements of type `a` within `S` while optionally
    ignoring the structure and return something also with structure `S`.
+
+4. You have such a function that doesn't change the element itself (return).
 
 ## Images
 
