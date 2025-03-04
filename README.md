@@ -23,12 +23,15 @@ resources to recommend!
 
 A monadic type is the base type plus some extra information/effects.
 
-Having a monadic type `M a` simply means that you can make some functions that take an `a`
-and return an `a`, potentially with some extra information/effects that can be safely ignored
-while still guaranteeing some essential properties (i.e. associativity, identity, and
-totality*).
+Having a monad means that:
 
-*Totality is redundant here, as it's already implied by taking and returning an `a`.
+1. You can make some functions that take an element of type `a`and put it into some structure `S`
+   (which may have some extra information/effects).
+   
+2. You have such a function that doesn't change the element when putting it into the structure.
+   
+3. You can make some functions that operate on elements of type `a` within `S` while optionally
+   ignoring the structure and return something also with structure `S`.
 
 ## Images
 
