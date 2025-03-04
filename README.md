@@ -1,6 +1,6 @@
 # Monad Notes
 
-![monads_monoids](https://github.com/user-attachments/assets/4d4e2715-8fca-4eb9-9536-9e9fe0f0e956)
+![monads_monoids](https://github.com/user-attachments/assets/ec86a221-04d3-4b26-aa75-56eed2b872d7)
 
 This is a page to collate my notes as I work to solidify in my mind what monads really are.
 Once my understanding stablilizes I plan to convert this into more of a cheatsheet.
@@ -36,14 +36,16 @@ totality*).
 (see below for more), we know we'll get something of the same (monadic) type out of the endofunctors
 **and can safely hide some extra information/effects inside their execution pipelines**:
 
-![monads_monoids](https://github.com/user-attachments/assets/4d4e2715-8fca-4eb9-9536-9e9fe0f0e956)
+![monads_monoids](https://github.com/user-attachments/assets/44a31819-e1c4-471f-8940-2f5e9c629517)
 
-Monoids have a type, an operator that exhibits totality and associativity, and an element
-that exhibits identity when used with that operator:
+A monoid is a set combined with a binary associative operator and an identitiy element. Each monoid
+has a type of elements within the set (this set type could be anything), an operator that exhibits
+totality and associativity, and an element that exhibits identity when used with that operator:
 
 ![monoids](https://github.com/user-attachments/assets/d13d4c3a-18a3-440f-8126-1fb48700215b)
 
-Monads have a type constructor, a bind operator, and a return operator:
+A monad is a monoid whose set type is a type of endofunctor. Each monad has a type constructor, a
+bind operator, and a return operator:
 
 ![monads](https://github.com/user-attachments/assets/ecd2e356-944f-4035-be6a-e42743e4bd04)
 
@@ -96,7 +98,7 @@ Monads have a type constructor, a bind operator, and a return operator:
     class Endofunctor f where  
         fmap :: (a -> a) -> f a -> f a  
 
-    -- Monad a == Monoid (a -> a)
+    -- Monad a == Monoid (S a)
 
     class Monoid a where
         op :: a -> a -> a
@@ -131,10 +133,11 @@ Monads have a type constructor, a bind operator, and a return operator:
     class Endofunctor f where  
         fmap :: (a -> a) -> f a -> f a 
 
-    -- (Potentially) extra info/effects!
-    --                       |
-    --                       v  
-    -- Monad a == Monoid (a -> a)
+    --   Structure - potentially 
+    --      extra info/effects!
+    --                    |
+    --                    v  
+    -- Monad a == Monoid (S a)
     
     class Monoid a where
         -- | Totality (per type definition)
