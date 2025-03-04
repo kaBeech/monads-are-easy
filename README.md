@@ -1,4 +1,4 @@
-# Monads Are Easy!
+# Monad Notes
 
 ![monads_monoids](https://github.com/user-attachments/assets/4d4e2715-8fca-4eb9-9536-9e9fe0f0e956)
 
