@@ -2,9 +2,10 @@
 
 ![monads_monoids](https://github.com/user-attachments/assets/4d4e2715-8fca-4eb9-9536-9e9fe0f0e956)
 
-I made this when the ideas of monads and related concepts "fully" clicked in my head.
+This is a page to collate my notes as I work to solidify in my mind what monads really are.
+Once my understanding stablilizes I plan to convert this into more of a cheatsheet.
 
-I hope this helps show how simple these concepts really are!
+I hope it helps show how simple these concepts are!
 
 If this seems like a long read, it's because it gives the same basic info in like 20
 different ways! Feel free to jump around to whichever parts seem helpful and stop
@@ -89,9 +90,11 @@ Monads have a type constructor, a bind operator, and a return operator:
     
 ## Compact Pseudo-Haskell
 
-    type Functor a b = a -> b
+    class Functor f where  
+        fmap :: (a -> b) -> f a -> f b  
 
-    type Endofunctor a = a -> a
+    class Endofunctor f where  
+        fmap :: (a -> a) -> f a -> f a  
 
     -- Monad a == Monoid (a -> a)
 
@@ -114,9 +117,12 @@ Monads have a type constructor, a bind operator, and a return operator:
 
 ## Verbose Pseudo-Haskell
 
-    type Functor a b = a -> b
+    -- | A list is an example of a functor
+    class Functor f where  
+        fmap :: (a -> b) -> f a -> f b  
 
-    type Endofunctor a = a -> a
+    class Endofunctor f where  
+        fmap :: (a -> a) -> f a -> f a 
 
     -- (Potentially) extra info/effects!
     --                       |
@@ -211,6 +217,9 @@ wrapping your brain around the concepts in a practical way.
 - [Write Yourself a Scheme in 48 Hours (Wikibooks Edition)](https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours)
 - [Haskell Wiki: Monad](https://wiki.haskell.org/index.php?title=Monad)
 - [What is a Monad? - Computerphile](https://www.youtube.com/watch?v=t1e8gqXLbsU)
+- [Functor](https://hackage.haskell.org/package/ghc-internal-9.1201.0/docs/src/GHC.Internal.Data.Functor.html)
+- [Monoid](https://hackage.haskell.org/package/ghc-internal-9.1201.0/docs/src/GHC.Internal.Data.Monoid.html)
+- [Monad](https://hackage.haskell.org/package/ghc-internal-9.1201.0/docs/src/GHC.Internal.Control.Monad.html)
 - [Maybe](https://hackage.haskell.org/package/ghc-internal-9.1201.0/docs/src/GHC.Internal.Data.Maybe.html#maybe)
 - [mtl](https://github.com/haskell/mtl)
 - [random](https://github.com/haskell/random)
