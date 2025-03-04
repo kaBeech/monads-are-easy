@@ -21,7 +21,7 @@ resources to recommend!
 
 ## Summary
 
-A monadic type is the base type plus some extra information/effects.
+A monadic type is the base type plus some structure which may contain extra information/effects.
 
 Having a monad means that:
 
