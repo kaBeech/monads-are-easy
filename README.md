@@ -119,8 +119,19 @@ Monads have a type constructor, a bind operator, and a return operator:
 
     -- | A list is an example of a functor
     class Functor f where  
-        fmap :: (a -> b) -> f a -> f b  
-
+        fmap :: (a -> b) -> f a -> f b
+        
+    -- | An egg carton is an example of an endofunctor. You could take a 
+           function that turns blue eggs into green eggs, apply it to blue eggs
+           in an egg carton, and wind up with green eggs in an egg carton.
+           However, you could not take a function that turns eggs into chickens,
+           apply it to eggs in an egg carton, and wind up with chickens in an
+           egg carton. You can think of this either as being because the egg
+           carton ceases to be an egg carton when it is filled with contents
+           that are not eggs, or because chickens would not fit in an egg carton
+           (or more precisely, you couldn't guarantee a chicken would fit in an
+           empty egg carton only by virtue of the fact that it is an empty egg
+           carton).
     class Endofunctor f where  
         fmap :: (a -> a) -> f a -> f a 
 
