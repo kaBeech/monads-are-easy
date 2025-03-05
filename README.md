@@ -41,7 +41,7 @@ Having a monad means that:
 
 "A monad (in `a`) is a monoid in the category of endofunctors (of `a`)." Since it's a monoid
 (see below for more), we know we'll get something of the same (monadic) type out of the endofunctors
-**and can safely hide some extra information/effects inside their execution pipelines**:
+**and can safely hide some extra information/effects inside their structure/execution pipelines**:
 
 ![monads_monoids](https://github.com/user-attachments/assets/44a31819-e1c4-471f-8940-2f5e9c629517)
 
