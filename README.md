@@ -126,11 +126,14 @@ bind operator, and a return operator:
 
 ## Verbose Pseudo-Haskell
 
-    -- | A list is an example of a functor
+    -- | A functor is something you can map over.
+    --   A list is an example of a functor
     class Functor S where  
         fmap :: (a -> b) -> S a -> S b
 
-    -- | A deck of cards (for the sake of example, ranked in order [2..K,A] and
+    -- | An endofunctor is like a functor but elements in the output are the same
+           type as elements in the input.
+         A deck of cards (for the sake of example, ranked in order [2..K,A] and
            [C,D,H,S], no Jokers), is an example of an endofunctor. If you have a 
            function that takes an input card and returns the next card in ranked 
            order (or with 2C if the input card is AH), applying this function to a
