@@ -25,15 +25,14 @@ A monadic type is the base type plus some structure which may contain extra info
 
 Having a monad means that:
 
-1. You have a monadic type `M (S a)` consisting of elements of type `a` in structure `S` (which may
-   have some extra information/effects)
-
-2. You have something that builds such a monadic type, AKA a type constructor
+1. You have a type constructor that builds a monadic type `M (S a)` consisting of elements of type
+   `a` in structure `S` (which may have some extra information/effects)
   
-3. You have a function that takes an `S a` and puts it into a monadic type `M (S a)`, AKA a type
+2. You have a function that takes an `S a` and puts it into a monadic type `M (S a)`, AKA a type
    converter or return
    
-4. You have a function that chains together operations performed upon an `M (S a)`, AKA a bind
+3. You have a function that chains together operations performed upon an `M (S a)`, AKA a combinator
+   or bind
 
 
 ## Images
