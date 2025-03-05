@@ -25,15 +25,17 @@ A monadic type is the base type plus some structure which may contain extra info
 
 Having a monad means that:
 
-1. You have a type constructor that builds a monadic type `M (S a)` consisting of elements of type
-   `a` in structure `S` (which may have some extra information/effects)
+1. You have a type constructor that builds a monadic type `M (S a)` for elements of type `a` in
+     structure `S` (which may have some extra information/effects)
   
 2. You have a function that takes an `S a` and puts it into a monadic type `M (S a)`, AKA a type
-   converter or return
+     converter or return
    
 3. You have a function that chains together operations performed upon an `M (S a)`, AKA a combinator
-   or bind
+     or bind
 
+4. You can use points 2 and 3 together to perform operations on just the elements or just the
+     structure
 
 ## Images
 
@@ -112,15 +114,15 @@ bind operator, and a return operator:
         op id x = x
         op x id = x
 
-    class Monad (S a) where
-        TypeConstructor :: (S a) -> M (S a)
+    class Monad a where
+        TypeConstructor :: a -> M a
         TypeConstructor x = M x
-        `>>=` :: M (S a) -> ((S a) -> M (S b)) -> M (S b)
-        M x >>= f = f x :: M (S b)
-        M x >>= (\x' -> (f x' >>= g)) == (M x >>= f) >>= g :: M (S c)
-        return :: (S a) -> M (S a)
-        return x >>= f == f x :: M (S a)
-        M x >>= return == M x :: M (S a)
+        `>>=` :: M a -> a -> M b) -> M b
+        M x >>= f = f x :: M b
+        M x >>= (\x' -> (f x' >>= g)) == (M x >>= f) >>= g :: M c
+        return :: a -> M a
+        return x >>= f == f x :: M a
+        M x >>= return == M x :: M a
 
 ## Verbose Pseudo-Haskell
 
@@ -156,28 +158,28 @@ bind operator, and a return operator:
         op x id = x
 
     class Monad a where
-        TypeConstructor :: a -> M (S a)
+        TypeConstructor :: a -> M a
         TypeConstructor x = M x
         -- | AKA combinator, map, or flatmap.
         --   Congruent to op in Monoid.
         --   Totality (per type definition)   
-        bind :: M (S a) -> ((S a) -> M (S b)) -> M (S b)
-        bind (M x) f = f(x) :: M (S b)
+        bind :: M a -> (a -> M b) -> M b
+        bind (M x) f = f(x) :: M b
         -- | Associativity
         bind (M x) (\x' -> (bind (f(x')) g)) == bind (bind (M x) f) g
         -- | Alternative bind - infix of above
         --   Totality (per type definition)   
-        `>>=` :: M (S a) -> ((S a) -> M (S b)) -> M (S b)
-        M x >>= f = f x :: M (S b)
+        `>>=` :: M a -> (a -> M b) -> M b
+        M x >>= f = f x :: M b
         -- | Associativity
-        M x >>= (\x' -> (f x' >>= g)) == (M x >>= f) >>= g :: M (S c)
+        M x >>= (\x' -> (f x' >>= g)) == (M x >>= f) >>= g :: M c
         -- | AKA type converter or unit.
         --   Congruent to id in Monoid
-        return :: a -> M (S a)
+        return :: a -> M a
         -- | Left identity
-        return x >>= f == f x :: M (S a)
+        return x >>= f == f x :: M a
         -- | Right identity
-        M x >>= return == M x :: M (S a)
+        M x >>= return == M x :: M a
             
     -- | Example: Function returning a monadic type.
     --   Inflates an imaginary (i.e. actually inflating the balloon as a side
