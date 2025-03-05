@@ -34,8 +34,8 @@ Having a monad means that:
 3. You have a function that chains together operations performed upon an `M (S a)`, AKA a combinator
      or bind
 
-4. You can use points 2 and 3 together to perform operations on just the elements or just the
-     structure
+4. You can use points 2 and 3 together to perform operations on elements of the monadic type that
+     affect either only the elements or only the structure
 
 ## Images
 
