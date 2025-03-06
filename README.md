@@ -21,6 +21,9 @@ resources to recommend!
 
 ## Summary
 
+- Update: a monad is just an endofunctor that's also a monoid in the same category. Idk why
+    Saunders couldn't have just said that haha. This page will likely get updated gradually.
+
 A monadic type is the base type plus some structure which may contain extra information/effects.
 
 Having a monad means that:
